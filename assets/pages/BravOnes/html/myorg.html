@@ -1,0 +1,42 @@
+<center><h1>Member Of...</h1>
+<div ng-init="loadmyorglist()">
+
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw8 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">#</th>
+          <th class="fw6 tl pa3 bg-white"> Name</th>
+          <th class="fw6 tl pa3 bg-white">Email</th> 
+          <th class="fw6 tl pa3 bg-white">Contact</th>
+          <th class="fw6 tl pa3 bg-white">Status</th>
+          <th class="fw6 tl pa3 bg-white">View Profile</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <tr class="stripe-dark" ng-repeat="aorg in acceptedList">
+          <td class="pa3">{{ $index + 1 }}</td>
+          <td class="pa3">{{aorg.name}}</td>
+          <td class="pa3"> {{aorg.contact.email}} </td>
+          <td class="pa3">{{aorg.contact.phone}}</td>
+          <td class="pa3">Joined!</td> 
+           <td class="pa3">  <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer" ng-click="viewCompany(aorg.name)" >View </button></td>                           
+         </tr>
+
+         <tr class="stripe-dark" ng-repeat="porg in pendingList">
+          <td class="pa3">{{ $index + 1 }}</td>
+          <td class="pa3">{{porg.name}}</td>
+          <td class="pa3"> {{porg.contact.email}} </td>
+          <td class="pa3">{{porg.contact.phone}}</td>
+          <td class="pa3">Pending!</td> 
+           <td class="pa3">  <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer" ng-click="viewCompany(porg.name)" >Accept </button></td>                           
+         </tr>
+
+         </tbody>
+    </table>
+       </div>
+
+
+</div>
+</center>
+

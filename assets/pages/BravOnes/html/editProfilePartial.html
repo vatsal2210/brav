@@ -1,0 +1,68 @@
+<div layout="row" class="ma2 pa2" layout-align="center center">
+  <md-content layout-padding flex="50">
+    <form name="editProfilePartialForm" autocomplete="off">
+      <h1 class="f1 black-70 center">Edit Profile</h1>
+      <md-input-container class="md-block">
+        <label>Name</label>
+        <input type="text" ng-model="user.name" />
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Description</label>
+        <input type="text" ng-model="user.profile.description" />
+      </md-input-container>
+
+      <md-input-container style="width: 100%;">
+        <label>TimeZone</label>
+        <md-select ng-model="user.tz">
+          <md-option ng-repeat="tz in tzs" ng-value="tz.name">
+            {{tz.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Experience</label>
+        <input type="text" ng-model="user.profile.experience" />
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Conflict Management Fees (Per Hour)</label>
+        <input type="text" ng-model="user.profile.rate" />
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Currency</label>
+        <md-select ng-model="user.profile.currency">
+          <md-option ng-repeat="cr in currencies" ng-value="cr.code">
+            {{cr.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <div class="mb3">
+        <label style="color: rgba(0,0,0,0.5);">Auto Accept Mediation Sessions</label>
+        <md-button class="md-raised md-primary" type="submit" ng-model="user.profile.autoAccept" ng-click="user.profile.autoAccept = !user.profile.autoAccept">{{user.profile.autoAccept ? 'Yes' : 'No'}}</md-button>
+      </div>
+
+      <div class="mb3">
+        <label style="color: rgba(0,0,0,0.5);">Apply to become professional mediator</label>
+        <md-button class="md-raised md-primary" type="submit" ng-model="user.profile.proMediatorStatusRequested" ng-click="user.profile.proMediatorStatusRequested = !user.profile.proMediatorStatusRequested">{{user.profile.proMediatorStatusRequested ? 'Yes' : 'No'}}</md-button>
+      </div>
+
+      <div class="mb3">
+        <label style="color: rgba(0,0,0,0.5);">Have International Insurance: </label>
+        <md-button class="md-raised md-primary" type="submit" ng-model="user.profile.hasInternationalInsurance" ng-click="user.profile.hasInternationalInsurance = !user.profile.hasInternationalInsurance">{{user.profile.hasInternationalInsurance ? 'Yes' : 'No'}}</md-button>
+      </div>
+
+
+      <label style="color: rgba(0,0,0,0.5);">Specialities (Enter speciality & press `Enter`)</label>
+      <md-chips class="center" ng-model="user.profile.specialities" md-input-name="specialities" md-floating-label="Enter your speciality here & press Enter"
+        md-removable="removable" md-enable-chip-edit="true" required="true"></md-chips>
+
+      <div class="f2 center">
+        <md-button class="md-raised md-accent" type="submit" ng-click="saveChanges()">Save Changes</md-button>
+      </div>
+
+    </form>
+  </md-content>
+</div>

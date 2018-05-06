@@ -1,0 +1,36 @@
+<center><h1>Edit</h1>
+<div ng-init="loadDetails()">
+  <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Name : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{details.name}}
+    </div> <div class="col-sm-3 col-md-4 col-lg-4 col-xs-2" >  </div>
+  </div>
+  <input type="text" class="form-control" ng-model="details.name">
+  <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ></div><b>  Tags : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{details.tags}}
+    </div>
+
+ <div class="mv3 tc">
+            <label class="db fw6 lh-copy f6" for="individualsArray">Insert Tags</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="bplate.tags" type="text" name="individualsArray"  id="individualsArray" placeholder="Enter the tags involved in the dispute" ng-keyup="$event.keyCode == 13 && insertTag(bplate.tags,individualsArray)">
+
+            <div class="flex flex-wrap mv3 tc" ng-if="tagsArray.length != 0">
+                <span ng-repeat="tag in tagsArray" class="flex-1 pa2 br4 ma2 bg-brav-secondary-dark-blue white" ng-click="removeTag($index,tagsArray)">{{tag}} </span>
+            </div>
+          </div>
+
+     <div class="col-sm-3 col-md-4 col-lg-4 col-xs-2" >  </div>
+    <span ng-repeat="t in tags" class="flex-1 pa2 br4 ma2 bg-brav-secondary-dark-blue white" ng-click="removeTag($index,tags)">{{t}} </span>
+    <trix-editor class="agreement shadow-5 ba bw1 b--black-20 overflow-y-auto vh-100 f5 f4-m f3-l fw2 black-50 ma3 pa3 lh-copy mw-40 w-100-m w-70-ns w-100 pre-wrap outline-0" ng-model-options="{ updateOn: 'blur' }" spellcheck="false" ng-if="true" ng-model="details.text"
+        angular-trix trix-initialize="trixInitialize(e, editor);" trix-change="trixChange(e, editor,undefined);">
+
+      </trix-editor>
+     <!-- <div medium-editor ng-model="details.text" contenteditable="{{finalizedAgreement}}" bind-options="{'toolbar': {'buttons': ['bold', 'italic', 'underline']}}" class="agreement shadow-5 ba bw1 b--black-20 overflow-y-auto vh-100 f5 f4-m f3-l fw2 black-50 ma3 pa3 lh-copy mw-40 w-100-m w-70-ns w-100 pre-wrap outline-0"> -->
+     </div>
+     <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-green white hover-bg-blue pointer" ng-click="EditBPContent()">Edit BoilerPlate</button>
+  </div>
+</center>
+

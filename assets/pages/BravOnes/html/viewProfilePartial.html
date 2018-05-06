@@ -1,0 +1,35 @@
+<div class="center">
+  <h1 class="f1 black-70 center">My Profile</h1>
+  <div layout="column" layout-align="center center">
+    <article class="mw7 center bg-white br3 pa3 pa4-ns mv3 ba b--black-30 md-whiteframe-24dp">
+      <div layout="column" layout-align="center center">
+        <!-- <div class="dib bg-moon-gray br-100 h4 w4"></div> -->
+        <!-- <img src="" class="br-100 h3 w3 dib" title="Photo of a kitty staring at you"> -->
+        <h1 class="f4">{{user.name}}</h1>
+        <hr class="mw3 bb bw1 b--black-10">
+      </div>
+      <p ng-show="!!user.profile.description" class="lh-copy measure center f6 black-70">
+        {{user.profile.description}}
+      </p>
+      <div layout="row">
+        <span class="flex-1 br4 b--gray ba bw1 pa2 ma2">Profile: {{user.profile.approved ? " Approved" : " Not Approved"}}</span>
+        <span class="flex-1 br4 b--gray ba bw1 pa2 ma2">Experience: {{user.profile.experience}}</span>
+      </div>
+      <div ng-if="user.profile.proMediatorStatusRequested" layout="row">
+        <span  class="flex-1 br4 b--gray ba bw1 pa2 ma2">Professional Mediator Status: {{user.profile.proMediatorStatusApprved ? "Approved" : "Not Approved"}}</span>
+      </div>
+      <div class="br4 b--gray ba bw1 bg-lightest-blue black pa2 ma2">Email: {{user.email}} </div>
+      <div class="br4 b--gray ba bw1 pa2 ma2">Preferred Time Zone : {{user.tz}}</div>
+      <div class="br4 b--gray ba bw1 bg-lightest-blue black pa2 ma2">Session Fees: {{user.profile.rate}} {{user.profile.currency}} per Hour</div>
+      <div class="br4 b--gray ba bw1 pa2 ma2">Auto Accept Mediation Request: {{user.profile.autoAccept?'Yes':'No'}}</div>
+      <div class="br4 b--gray ba bw1 bg-lightest-blue black pa2 ma2">
+        Have International Insurance{{user.profile.hasInternationalInsurance? ': Yes':': No (It is Mandatory to have)'}}
+      </div>
+      <span ng-show="!!user.profile.specialities" class="fw8 pa2 ma2">Specialities:</span>
+      <div layout="row" layout-wrap>
+        <span class="br4 pa2 ma2 w-40 flex-basis-40 flex-1 bg-brav-secondary-dark-blue white" ng-repeat="speciality in user.profile.specialities">{{speciality}}</span>
+      </div>
+    </article>
+    <md-button class="md-raised md-accent" ng-click="flipper()">Edit/ Update Profile</md-button>
+  </div>
+</div>

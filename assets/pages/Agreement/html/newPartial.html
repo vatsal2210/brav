@@ -1,0 +1,43 @@
+<div class="center">
+  <div class="center">
+    <h1>Create  an Agreement</h1>
+  </div>
+
+  <div layout="row" layout-align="center center">
+    <md-content layout-padding flex="50">
+        <form name="createNewAgreementForm" ng-submit="$event.preventDefault()" autocomplete="off" novalidate>
+
+          <md-input-container class="md-block">
+            <label>Agreement Title</label>
+            <input required type="text" name="atitle" maxlength="32" ng-model="thisAgreementStuff.title" />
+
+            <div ng-messages="createNewAgreementForm.atitle.$error" role="alert">
+              <div ng-message-exp="['required','maxlength']">
+                Please enter Agreement Title (max 32 characters).
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Description</label>
+            <input required type="text" name="description" ng-model="thisAgreementStuff.description" />
+
+            <div ng-messages="createNewAgreementForm.description.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Please enter some description.
+              </div>
+            </div>
+          </md-input-container>
+
+            <label style="color: rgba(0,0,0,0.5);">Emails of Other Parties Involved (press enter to add multiple)</label>
+            <md-chips class="center" ng-model="thisAgreementStuff.involvedParties" md-input-name="emailField" md-floating-label="Emails of Other Parties Involved"
+              md-removable="removable" md-transform-chip="validateChip($chip)" md-enable-chip-edit="true" required="true"></md-chips>
+
+          <md-button class="md-raised md-primary" type="submit" ng-click="createAgreement()" ng-if="helperStuff.isFresh">Create Agreement</md-button>
+          <md-button class="md-raised md-accent" type="button" ng-click="editAgreement()" ng-if="!helperStuff.isFresh">Save Edited Details</md-button>
+          <md-button class="md-raised md-primary" type="button" ng-click="flipper()" ng-if="!helperStuff.isFresh">Start Drafting</md-button>
+
+        </form>
+    </md-content>
+  </div>
+</div>

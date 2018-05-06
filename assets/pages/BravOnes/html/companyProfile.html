@@ -1,0 +1,66 @@
+<center><h1>Company Profile</h1>
+<div ng-init="loadCompanyProfile()">
+  <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Name : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.name}}
+    </div> 
+  </div><br>
+
+  <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b> Creator : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.creator.email}}
+    </div> 
+  </div><br>
+
+   <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b> Company Email : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.contact.email}}
+    </div> 
+  </div><br>
+
+   <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Contact : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.contact.phone}}
+    </div> 
+  </div><br>
+
+   <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Address : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.contact.address}}
+    </div> 
+  </div><br>
+
+   <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Currency : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.currency}}
+    </div> 
+  </div><br>
+
+   <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Nationality : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" >
+      {{comp.country}}
+    </div> 
+  </div><br>
+
+  <div class="row">
+    <div class="col-sm-5 col-md-6 col-lg-6 col-xs-4" ><b>  Members : </b></div>
+    <div  class="col-sm-4 col-md-2 col-lg-2 col-xs-6" ng-repeat="mem in comp.members" ng-if="mem.isMember">
+      {{mem.email}}
+    </div> 
+  </div><br>
+
+  <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer" ng-click="joinCompany()" ng-if="!comp.creator.flag">Join Company </button>
+
+  <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer" ng-click="exitCompany()" >Exit Company </button>
+
+
+</div>
+</center>
+

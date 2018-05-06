@@ -1,0 +1,52 @@
+<div class="center">
+
+  <div ng-if="!agreements.length">
+    <h1 class="f1 black-60">No Drafted Agreements Yet</h1>
+    <md-button class="md-raised md-primary" ng-href="#/agreements/new">Create an Agreement</md-button>
+  </div>
+
+  <div ng-if="agreements.length">
+    <h1 class="f1 black-60">All Agreements</h1>
+    <md-card style="margin:0px">
+        <md-input-container style="margin:15px;">
+            <label>Filter Results</label>
+            <input type="text" ng-model="filterAgreement">
+        </md-input-container>
+
+        <div ng-hide="true">
+            {{(filteredAgreements = (agreements | filter: filterAgreement))}}
+        </div>
+    </md-card>
+
+    <md-table-container>
+      <table md-table>
+        <thead md-head md-order="_id">
+          <tr md-row>
+            <th md-column md-order-by="_id">#</th>
+            <th md-column md-numeric>Title</th>
+            <th md-column md-numeric>Created At</th>
+            <th md-column md-numeric>Description</th>
+            <th md-column md-numeric>Involved Parties</th>
+            <th md-column md-numeric>Actions</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row ng-repeat="agreement in filteredAgreements | limitTo: tableDefaultOptions.query.limit : (tableDefaultOptions.query.page -1) * tableDefaultOptions.query.limit">
+            <td md-cell>{{ (tableDefaultOptions.query.page  - 1) * tableDefaultOptions.query.limit + $index + 1 }}</td>
+            <td md-cell>{{agreement.title}}</td>
+            <td md-cell>{{callhumanReadableDate(agreement.createdAt)}}</td>
+            <td md-cell>{{agreement.description.length > 100 ? agreement.description.substring(0,100) + "..." : agreement.description}}</td>
+            <td md-cell><span ng-repeat="a in agreement.involvedParties track by $index" class="md-button md-raised" ng-disabled="true">{{a}}</span></td>
+            <td md-cell><md-button class="md-raised md-warn" ng-click="view(agreement._id)">Edit</md-button></td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <md-table-pagination md-limit="tableDefaultOptions.query.limit" md-limit-options="tableDefaultOptions.limitOptions" md-page="tableDefaultOptions.query.page"
+      md-total="{{agreements.length}}" md-page-select="true" md-boundary-links="true">
+    </md-table-pagination>
+
+  </div>
+
+</div>

@@ -1,0 +1,88 @@
+<header class="tc ph4 ma0">
+  <div class="flip-container">
+    <div class="flipper" ng-class="{'flipped': drafting}">
+      <div class="front">
+        <div class="flex justify-center items-center flex-column flex-row-ns flex-column-m">
+
+          <div align="center">  <!-- temp-->
+                <h3 class="f3 black-50 tc" >Title: {{title}} </h3>
+
+                <h3 class="f3 black-50 tc" >Tags:  {{ tagsArray}} </h3>
+
+                <h3 class="f5 black-70 tc" >Published : {{isFinal? "YES" : "NO"}} </h3>
+          </div>
+<!--
+          <div medium-editor ng-model="bptext" contenteditable="{{finalizedAgreement}}" bind-options="{'toolbar': {'buttons': ['bold', 'italic', 'underline']}}" class="agreement shadow-5 ba bw1 b--black-20 overflow-y-auto vh-100 f5 f4-m f3-l fw2 black-50 ma3 pa3 lh-copy mw-40 w-100-m w-70-ns w-100 pre-wrap outline-0">
+          </div>-->
+
+          <trix-editor class="agreement shadow-5 ba bw1 b--black-20 overflow-y-auto vh-100 f5 f4-m f3-l fw2 black-50 ma3 pa3 lh-copy mw-40 w-100-m w-70-ns w-100 pre-wrap outline-0" ng-model-options="{ updateOn: 'blur' }" spellcheck="false" ng-if="true" ng-model="bptext"
+        angular-trix trix-initialize="trixInitialize(e, editor);" trix-change="trixChange(e, editor);">
+
+          <div class="flex flex-1 w-100 flex-column">
+            <div class="ma1 pa2 custom_menu">
+
+
+
+             <!--          <div ng-if="showConfirm">
+                <h4 class="f4">Are You Sure (no more edits will be allowed)? </h4>
+                <div class="flex">
+                  <button type="button" class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-green pointer" ng-click="getBoilerPlateData()">Yes</button>
+                  <button type="button" class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-red pointer" ng-click="cancelBoilerPlate()">No</button>
+                </div>
+              </div>-->
+
+            </div>
+
+          </div>
+        </div>
+        <div class="flex w-100 pb4">
+        <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-brav-secondary-dark-blue white hover-bg-blue pointer" ng-click="back()">Back</button>
+
+         <button type="button" class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-blue pointer" ng-click="saveBoilerplate()">
+                Save Boilerplate
+              </button>
+
+               <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-light-green hover-bg-blue pointer" ng-if="!showConfirm"  ng-click="finalize()">Publish</button>
+
+          <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-green white hover-bg-blue pointer" ng-click="clearScope() && flipper()">Create New Boilerplate</button>
+
+
+        </div>
+      </div>
+
+
+      <div class="back">
+          <div>
+      <form class="measure center" autocomplete="off">
+        <!-- on page load request get all cases  -->
+          <h1 class="f1 black-70 tc">{{mainTitle}}</h1>
+          <div class="mt3 tc">
+            <label class="fw6 lh-copy f6" for="atitle">BoilerPlate Title</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" maxlength="30" ng-model="title" type="text" name="atitle"  id="atitle" placeholder="Enter the BoilerPlate title">
+          </div>
+
+           <div class="mv3 tc">
+            <label class="db fw6 lh-copy f6" for="individualsArray">Insert Tags</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="bplate.tags" type="text" name="individualsArray"  id="individualsArray" placeholder="Enter the tags involved in the dispute" ng-keyup="$event.keyCode == 13 && insertTag(bplate.tags,individualsArray)">
+            <div class="red b pa2" ng-if="errorTag != ''">{{errorTag}}</div>
+            <div class="flex flex-wrap mv3 tc" ng-if="tagsArray.length != 0">
+                <span ng-repeat="tag in tagsArray" class="flex-1 pa2 br4 ma2 bg-brav-secondary-dark-blue white" ng-click="removeTag($index,tagsArray)">{{tag}} </span>
+            </div>
+          </div>
+
+
+          <div class="flex w-100 pb4">
+            <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer" ng-click="createBoilerPlate(title)" ng-if="!showEdit">Create BoilerPlate</button>
+            <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-red white hover-bg-blue pointer" ng-click="editBpDetails(bplate)" ng-if="showEdit">Save Edited Details</button>
+            <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-green white hover-bg-blue pointer" ng-click="flipper()" ng-if="showEdit">Start Drafting</button>
+          </div>
+          <br/>
+          <a href="#/agreements/vbp" >View All Boilerplates</a>
+
+        </form>
+    </div>
+      </div>
+
+    </div>
+  </div>
+</header>

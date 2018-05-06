@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center margin-top-login">
+      <div class="login-logo">
+        <img src="images/login-log.png" alt="" class="">
+      </div>
+      <form name="USC.loginFrm">
+        <div class="form-group">
+          <input type="text" class="form-control txt-username" id="username" placeholder="Username" ng-model="USC.login.username">
+          <input type="text" class="form-control txt-username" id="password" placeholder="Password" ng-model="USC.login.password" ng-if="USC.isLogin">
+          <!-- <p id="errMsg"></p> -->
+          <button type="button" class="btn btn-default login-btn" id="nextBtn" ng-if="!USC.isLogin" ng-click="USC.nextFn()">next</button>
+          <button type="button" class="btn btn-default login-btn" id="loginBtn" ng-if="USC.isLogin" ng-click="USC.loginFn()">login</button>
+        </div>
+      </form>
+      <div class="password-link text-center">
+        <a href="password.html">Forgot your username?</a>
+      </div>
+      <div class="password-link text-center">
+        <a href="#!/register" id="register-user">New Here!!!</a>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

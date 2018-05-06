@@ -1,0 +1,10 @@
+<div class="flip-container">
+  <div class="flipper" ng-class="{'flipped': drafting}">
+    <div class="front" ng-if="!drafting">
+      <div ng-include="'/pages/BravOnes/html/editProfilePartial.html'">  </div>
+    </div>
+    <div class="back" ng-if="drafting">
+      <div ng-include="'/pages/BravOnes/html/viewProfilePartial.html'">  </div>
+    </div>
+  </div>
+</div>

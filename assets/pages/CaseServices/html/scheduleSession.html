@@ -1,0 +1,39 @@
+<div class="center" ng-init="loadAllSessions()">
+  <h2>Schedule Session</h2>
+
+<div layout="row" layout-align="center center">
+  <md-content layout-padding>
+      <form name="scheduleSessionForm" autocomplete="off">
+
+        <md-input-container class="md-block">
+          <label>TimeZone</label>
+          <md-select ng-model="session.tz" required>
+            <md-option ng-repeat="ttz in tzs" value="{{ttz.value}}" >{{ttz.name}}</md-option>
+          </md-select>  
+          <div ng-messages="scheduleSessionForm.tz.$error" role="alert">
+            <div ng-message-exp="['required']">
+              Please select timezone
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Time</label>
+          <md-select ng-model="session.time" required>
+            <md-option ng-repeat="atime in times" value="{{atime.minutes}}" >{{atime.display}}</md-option>
+          </md-select>  
+          <div ng-messages="scheduleSessionForm.time.$error" role="alert">
+            <div ng-message-exp="['required']">
+              Please select time
+            </div>
+          </div>
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <md-datepicker ng-model="session.date" md-current-view="year" md-placeholder="Enter the date" aria-label="Date Picker"></md-datepicker>
+        </md-input-container>
+
+        <md-button class="md-raised md-primary" type="submit"  ng-click="proceed(session)">Save the schedule</md-button>
+
+      </form>
+  </md-content>
+</div>

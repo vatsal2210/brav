@@ -1,0 +1,70 @@
+<div layout="column" layout-gt-md="row" layout-align="center center">
+  <div layout="column" class="w-100 mt2 pa2" ng-if="thisAgreementStuff.editable">
+
+    <div layout="row">
+      <div layout="row" class="flex-1">
+       <div class="w-80">
+         <md-autocomplete
+            md-selected-item="current"
+            md-item-text="item.text"
+            md-min-length="0"
+            md-search-text="searchSnippet"
+            md-items="item in matchSnippet(searchSnippet)"
+            placeholder="Custom Snippets">
+
+        <md-item-template>
+              <span md-highlight-text="searchSnippet" md-highlight-flags="^i">{{item.text}}</span>
+        </md-item-template>
+       </div>
+
+        <div>
+          <md-button class="md-raised md-warn" ngclipboard data-clipboard-text="{{current.text}}" ng-click="current.text && showSimpleToast('Copied To Clipboard')">
+            Copy
+          </md-button>
+        </div>
+
+    </div>
+
+    <div layout="row" class="flex-1">
+       <div class="w-80">
+         <md-autocomplete
+            md-selected-item="bp"
+            md-item-text="item.name"
+            md-min-length="0"
+            md-search-text="searchBoilerplate"
+            md-items="item in matchBoilerplate(searchBoilerplate)"
+            placeholder="Custom Boilerplate">
+
+        <md-item-template>
+              <span md-highlight-text="searchBoilerplate" md-highlight-flags="^i">{{item.name}}</span>
+        </md-item-template>
+       </div>
+
+        <div>
+          <md-button class="md-raised md-primary"
+              ng-click="bp.name && showConfirm($event,'Are you Sure?','Entire Content will be replaced with Boilerplate','Use Boilerplate',searchBoilerplate)">
+            Add
+          </md-button>
+        </div>
+
+      </div>
+    </div>
+
+    <div layout="row" layout-align="center" class="pa2 ma2">
+      <md-button class="md-raised md-accent" ng-click="flipper()" ng-if="thisAgreementStuff.editable">Details</md-button>
+      <md-button class="md-accent" ng-click="saveAgreement()" ng-if="thisAgreementStuff.editable">Save Agreement</md-button>
+      <md-button class="md-primary" ng-click="lastSaved()" ng-if="thisAgreementStuff.editable">Get Last Saved</md-button>
+      <md-button class="md-accent" ng-click="discardNonFinalAgreement()" ng-if="thisAgreementStuff.editable">Discard Agreement</md-button>
+      <md-button class="md-raised md-primary" ng-click="finalize($event)" ng-if="thisAgreementStuff.editable">Finalize Agreement</md-button>
+    </div>
+
+    <div class="agreement vh-100 lh-copy w-100 pre-wrap outline-0 fw2 black-50" layout="column" layout-align="center center">
+
+      <trix-editor class="w-60 mb4 vh-100 md-whiteframe-12dp overflow-y-auto" ng-model-options="{ updateOn: 'blur' }" spellcheck="false" ng-if="true" ng-model="content"
+        angular-trix trix-initialize="trixInitialize(e, editor);" trix-change="trixChange(e, editor,undefined);">
+
+      </trix-editor>
+    </div>
+
+  </div>
+</div>

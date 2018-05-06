@@ -1,0 +1,27 @@
+<div layout-gt-sm="row" layout="column" layout-align="center center">
+  <div flex="{{chatApi.selectedChat ? 70 : 100}}">
+    <div layout="column" layout-align="center center" flex-order-gt-md="2">
+      <h1>Session Name</h1>
+      <video id="mainVid" autoplay  style="background: black;"></video>
+      <section class="sectional-playlist">
+        <div id="playlist" class="pic-container">
+          <!--  <video autoplay flex style="background: lightgreen;"></video>
+            <video autoplay flex style="background: lightblue;"  id="remoteVideo"></video>
+            <video autoplay flex style="background: lightgreen;"></video>
+            <video autoplay flex style="background: lightblue;"  id="remoteVideo"></video>
+            <video autoplay flex style="background: lightgreen;"></video>
+            <video autoplay flex style="background: lightblue;"  id="remoteVideo"></video>
+            <video autoplay flex style="background: lightgreen;"></video>-->
+
+          </div>
+      </section>
+    </div>
+    <div layout="row" flex-order-gt-md="1">
+      <div flex class="center"><md-button class="md-raised md-primary" id="callButton" ng-click="startSession()" >Start Session</md-button></div>
+      <div flex class="center"><md-button class="md-raised md-primary" id="stopButton" ng-click="endSession()" >Stop Session</md-button></div>
+    </div>
+  </div>
+  <div flex="noshrink">
+      <div ng-include="'/pages/CaseServices/html/chatNav.html'">  </div>
+  </div>
+</div>

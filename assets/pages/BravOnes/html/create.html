@@ -1,0 +1,73 @@
+ <div>
+  <div layout="row" layout-align="center center">
+      <md-content layout-padding>
+        <form name="createform" autocomplete="off">          
+        <h1 class="f1 black-70 tc">Create Mediation Company</h1>
+        <md-input-container class="md-block">
+            <label>Name</label>
+            <input required maxlength="30" ng-model="companyname" type="text" name="cname"  id="cname" placeholder="Enter Company Name">
+            <div ng-messages="createform.cname.$error" role="alert">
+            <div ng-message-exp="'required'">
+            Please Enter a valid name
+          </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label >Contact</label>
+            <input ng-pattern="inttel" ng-model="contact" type="text" name="contact"  id="contact" placeholder="(+xx-xxxx-xxxx ,+xx.xxxx.xxxx,+xx xxxx xxxx)"required>
+            <div ng-messages="createform.contact.$error" role="alert">
+            <div ng-message-exp ="['required','pattern']">
+            Please Enter a valid Contact Number
+            </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Company EmailID</label>
+            <input ng-model="orgEmail" type="email" maxlength="100" minlength="5" name="orgEmail"  id="orgEmail" ng-pattern="/^.+@.+\..+$/" placeholder="Enter EmailID" required>      
+            <div ng-messages="createform.orgEmail.$error" role="alert">
+            <div ng-message-exp ="['required','maxlength','minlength','pattern']">
+              Please Enter a valid EmailID
+            </div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block"> 
+            <label>Address</label>
+            <textarea  class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" rows="10" cols="10" ng-model="caddress" type="text" name="caddress" id="caddress" placeholder="Enter Company Address" required>
+           </textarea>
+           <div ng-messages="createform.caddress.$error" role="alert">
+           <div ng-message-exp="['required']">
+             Please enter your address
+           </div>
+           </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+            <label>Currency</label>
+            <input  ng-pattern="regNat" ng-model="currency" type="text" name="currency"  id="currency" placeholder="Enter the Currency" required>
+            <div ng-messages="createform.currency.$error" rol="alert">
+            <div ng-message-exp="['required','pattern']">
+            Please enter a valid currency
+            </div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label >Nationality</label>
+            <input ng-pattern="regNat" ng-model="nationality" type="text" name="nationality"  id="nationality" placeholder="Enter  your Country"required>
+            <div ng-messages=" createform.nationality.$error" role="alert">
+            <div ng-message-exp ="['required','pattern']">
+             Enter valid Nationality.
+           </div>
+           </div>
+        </md-input-container><br>
+          <md-input-container>
+            <label for="individualsArray">Members</label>
+            <input ng-model="involvedPartyEmail" type="text" name="individualsArray"  id="individualsArray" placeholder="Email of involvedParties" ng-keyup="$event.keyCode == 13 && insertIndividual()">
+           <div class="red b pa2" ng-if="errorIndividual != ''">{{errorIndividual}}</div><br><br>
+            <div class="flex flex-wrap mv3 tc" ng-if="individualsArray.length != 0">
+                <span ng-repeat="individual in thisAgreementStuff.involvedParties" class="flex-1 pa2 br4 ma2 bg-brav-secondary-dark-blue white" ng-click="removeIndividual($index)">{{individual}} </span>
+            </div>
+          </md-input-container>
+          <div class="flex w-100 pb4">
+            <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer"  ng-click="createCompany()" >Create </button>
+           </div>
+        </form>
+    </div>

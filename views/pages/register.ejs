@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brav</title>
+  <!-- style file link -->
+  <link rel="stylesheet" href="../styles/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="../styles/style.css" type="text/css">
+  <!-- fonts link -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700" rel="stylesheet">
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="container">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center margin-top-login">
+        <div class="login-logo">
+          <img src="images/login-log.png" alt="" class="">
+        </div>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control txt-username" id="firstName" placeholder="First Name">
+            <input type="text" class="form-control txt-username" id="middleName" placeholder="Middle name">
+            <input type="text" class="form-control txt-username" id="LastName" placeholder="Last Name">
+            <input type="text" class="form-control txt-username" id="username" placeholder="Username">
+            <input type="text" class="form-control txt-username" id="password" placeholder="Password">
+            <input type="text" class="form-control txt-username" id="repeatPassword" placeholder="Repeat Password">
+            <p id="errMsg"></p>
+            <!-- <button type="button" class="btn btn-default login-btn" id="nextBtn">next</button> -->
+            <button type="button" class="btn btn-default login-btn" id="registerBtn">Register</button>
+          </div>
+        </form>
+        <div class="password-link text-center">
+          <a href="#" id="login-user">Already Registered!!!</a>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      $("#registerBtn").click(function () {
+        $('#errMsg').text('');
+        var _firstName = $('#firstName').val();
+        var _lastName = $('#lastName').val();
+        var _middleName = $('#middleName').val();
+        var _userName = $('#username').val();
+        var _password = $('#password').val();
+        if (_firstName && isValidEmail(_userName) && _password && _password == $('#repeatPassword').val()) {
+          let data = {
+            firstName: _firstName,
+            lastName: _lastName ? _lastName : '',
+            middleName: _middleName ? _middleName : '',
+            username: _userName,
+            password: _password
+          };
+          console.log('data', data)
+
+          $.ajax({
+            url: '/users/register',
+            method: 'POST',
+            data: data,
+            success: function (res) {
+              console.log('register res', res)
+              if (res.success) {
+                window.location = '/';
+              } else {
+                $('#errMsg').text(err.msg);
+              }
+            },
+            error: function (err) {
+              console.log('register error', err);
+              $('#errMsg').text(err.msg);
+            },
+            dataType: 'JSON'
+          });
+        } else {
+          if (!_userName)
+            $('#errMsg').text('Enter valid Password');
+          else if (!_firstName)
+            $('#errMsg').text('Enter valid First Name');
+          else if (!_password)
+            $('#errMsg').text('Enter valid Password');
+        }
+
+      });
+
+      $('#register-user').click(function () {
+        // $
+      })
+
+    });
+
+  </script>
+
+</body>
+
+</html>

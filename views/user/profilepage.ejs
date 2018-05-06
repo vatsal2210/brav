@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brav</title>
+    <!-- style file link -->
+    <link rel="stylesheet" href="../styles/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="../styles/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../styles/style.css" type="text/css">
+</head>
+
+<body style="background: #FFF">
+    <div class="video-call">
+        <div class="top-header">
+            <img src="../images/header-logo.png" alt="">
+        </div>
+        <div class="top-header-right">
+            <ul>
+                <li><a href="#" id="chat"><i class="fa fa-comments" aria-hidden="true"></i></a></li>
+                <li><a href="/note/create" id="notes"><i class="fa fa-pencil-square" aria-hidden="true"></i></a></li>
+                <li><a href="#" id="alert-msg"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li><a href="#"><img src="../images/user-img.jpg" class="user-img" alt=""></a></li>
+            </ul>
+        </div>
+
+    </div>
+    <!--video-call divion closed -->
+    <div class="left-side-bar">
+        <ul>
+            <li>
+                <a href="/note/view">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+                <a href="/task">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li id="mediator">
+                <a href="#">
+                    <i class="fa fa-video-camera" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right-popup">
+        <div class="chat-panel" style="display: none"></div>
+        <div class="notes-panel" style="display: none"></div>
+        <div class="alert-panel" style="display: none"></div>
+        <div class="profile-edit text-center" style="display: none">
+            <img src="../images/user-img.jpg" alt="">
+            <div class="your-account">
+                <a href="/profile">Your Account</a>
+            </div>
+            <div class="logout">
+                <a href="#" id="logout">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="right-side-panel">
+        <div class="container container-top-margin">
+            <div class="col-md-12 create-availability">
+                <h1>My Account</h1>
+                <div class="col-sm-2 padding-zero user-account">
+                    <img src="images/user-img.jpg" alt="">
+                </div>
+                <div class="col-sm-10 user-data">
+                    <div id="myname"></div>
+                    <div id="username">@evielliu</div>
+                    <div>Brav Client</div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="usre-data-heading padding-zero" style="border:none">
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact">CONTACT</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Email</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="emailid" id="emailid">evie.l.liu@gmail.com</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact"></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Phone</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="emailid">408-728-3047</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="usre-data-heading padding-zero">
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact">BASIC INFORMATION</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Location</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="emailid">Berkeley, California</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact"></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Time Zone</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="emailid">Pacific Standard Time, PST</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact"></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Gender</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="emailid">Female</p>
+                    </div>
+                </div>
+
+                <div class="usre-data-heading padding-zero" style="margin:40px 0px;">
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact">MEMBERSHIP AND BILLING</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Pay as you go</p>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <p class="emailid blue-color">edit subscription type</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-3 padding-zero">
+                        <p class="contact"></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="email-txt">Mastercard **** ****** 4567</p>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <p class="emailid blue-color">update payment method</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-3 padding-zero margin-bottom">
+                        <button type="submit" class="btn btn-default login-btn check-schedule">CANCEL MEMBERSHIP</button>
+                    </div>
+                </div>
+
+
+
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+    </div>
+    <!--right-side-panel closed -->
+</body>
+
+</html>
+
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#chat").click(function() {
+            $(".chat-panel").toggle();
+        });
+        $("#notes").click(function() {
+            $(".notes-panel").toggle();
+        });
+        $("#alert-msg").click(function() {
+            $(".alert-panel").toggle();
+        });
+
+        
+            if (sessionStorage.getItem('bravUser')) {
+                var myname = JSON.parse(sessionStorage.getItem('bravUser'));
+                $('#myname').text(myname.firstname + ' ' + myname.middlename + ' ' + myname.lastname);
+                $('#username').text(myname.username);
+                $('#emailid').text(myname.username);
+            }
+
+            $('#datetime').datetimepicker({
+                format: 'LT'
+            });
+            $('#datestart').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+            $('#dateend').datetimepicker({
+                useCurrent: false, //Important! See issue #1075
+                format: 'YYYY-MM-DD'
+            });
+            $("#datestart").on("dp.change", function (e) {
+                $('#dateend').data("DateTimePicker").minDate(e.date);
+            });
+            $("#dateend").on("dp.change", function (e) {
+                $('#datestart').data("DateTimePicker").maxDate(e.date);
+            });
+
+
+            $("#addSchedule").on('click', function (e) {
+                e.preventDefault();
+                $('errMsg').val('');
+                var _name = $('#Conflictname').val();
+                var _availability = JSON.stringify($('#availability').val());
+                var _description = $('#description').val();
+                var _start = $('#datestart').data('date');
+                var _end = $('#dateend').data('date');
+                var _time = $('#datetime').data('date');
+
+                if (_name && _start && _end && _time && _availability && _description) {
+                    var data = {
+                        title: _name,
+                        start: _start,
+                        end: _end,
+                        time: _time,
+                        availabilty: _availability,
+                        description: _description,
+                    }
+                    $.ajax({
+                        url: '/schedule/newschedule',
+                        method: 'POST',
+                        data: data,
+                        success: function (res) {
+                            if (res.success) {
+                                window.location = '/schedule/done';
+                            } else {
+                                $('#errMsg').text(err.msg);
+                            }
+                        },
+                        error: function (err) {
+                            $('#errMsg').text(err.msg);
+                        },
+                        dataType: 'JSON'
+                    });
+                } else {
+                    $('errMsg').val('Enter all fields');
+                }
+            })
+
+            $(document).on('click', '.chat-call-cancel', function (e) {
+                e.stopPropagation();
+                var id = $(this).attr('data-id');
+                $('#chat-container' + id).hide();
+            });
+
+            $('#mediator').on('click', function () {
+                if (sessionStorage.getItem('bravUser'))
+                    window.location = '/mediator/' + JSON.parse(sessionStorage.getItem('bravUser'))['id'];
+            })
+
+
+            function getChatContainer(id, name) {
+                if (id) {
+                    return $('<p class="chat-header">' + name.toUpperCase() +
+                        '<span data-id="' + id + '" class="chat-call-cancel" id="chat-call-remove' + id + '">x</span></p>' +
+                        '<div class="chat-text" id="chat-text' + id + '"></div>' +
+                        '<input type="text" class="chat-box" id="chat-box' + id + '" data-id="' + id + '">' +
+                        '<i  class="send fa fa-paper-plane" data-id="' + id + '" aria-hidden="true"></i>');
+                } else return false;
+            }
+
+            $(document).on('click', '.client', function () {
+                var id = $(this).attr('data-id');
+                var name = $(this).attr('data-name');
+                // connect(id);
+                var _main = $('#chats');
+                var _li = $('<li id="chat-container' + id + '"></li>');
+                var container = $(_main).find('#chat-container' + id);
+                console.log($('#chat-container' + id))
+                if (!container || container.length == 0) {
+                    $(".chat-panel").hide();
+                    container = getChatContainer(id, name);
+                    $(_main).append($(_li).append($(container)));
+                } else if (container.length == 1) {
+                    $(".chat-panel").hide();
+                    $('#chat-container' + id).show();
+                }
+            });
+
+
+            // $('#Conflictname').select2();
+            $('#availability').select2();
+
+            $.ajax({
+                url: '/user/online',
+                method: 'GET',
+                success: function (res) {
+                    console.log('onlineuser res', res)
+                    if (res.success && res.data.length > 0) {
+                        var _list = $('#users');
+                        var id = JSON.parse(sessionStorage.getItem('bravUser'))['id'];
+                        for (var i = 0; i < res.data.length; i++) {
+                            if (res.data[i].id != id)
+                                _list.append('<li class="client" data-id="' + res.data[i].id + '" data-name="' + res.data[i].firstname + ' ' + res.data[i].lastname + '">' + res.data[i].firstname + ' ' + res.data[i].lastname +
+                                    '</li>');
+                            else if (res.data[i].id == id) //temporary
+                                currentUser = res.data[i];
+                            var option2 = new Option(res.data[i].firstname, res.data[i].firstname);
+                            $('#availability').append(option2).trigger('change');
+                        }
+                    } else {
+
+                    }
+                },
+                error: function (err) {
+                    console.log('Login error', err);
+                    $('#errMsg').text(err.msg);
+                },
+                dataType: 'JSON'
+            });
+
+
+            //connect to the peering server
+
+            let connectedPeers = {};
+            let connectedCall = {};
+            let isInCall = false;
+            let loggedUser = JSON.parse(sessionStorage.getItem('bravUser'));
+
+            let peer = new Peer(loggedUser.id, {
+                host: '/',
+                port: 5103,
+                path: '/api'
+            });
+
+            // Show this peer's ID.
+            peer.on('open', function (id) {
+                console.log('ID :::: ', id);
+            });
+
+            // Await connections from others
+            peer.on('connection', connect);
+
+            peer.on('error', function (err) {
+                if (err)
+                    swal(err || err.Error);
+            });
+            peer.on('close', function (err) {
+                if (err)
+                    swal(err || err.Error);
+            });
+
+            function sendMsg(msg, id) {
+                if (msg && id) {
+                    var user = loggedUser;
+                    var c = peer.connect(id, {
+                        label: 'chat',
+                        serialization: 'none',
+                        metadata: {
+                            message: msg,
+                            name: user.firstname + ' ' + user.lastname
+                        }
+                    });
+                    c.on('open', function () {
+                        c.send(msg)
+                    });
+                }
+            }
+
+            function connect(c) {
+                // Handle a chat connection.
+
+                if (c.label === 'chat') {
+
+                    var id = c.peer;
+                    var _main = $('#chats');
+                    var _li = $('<li id="chat-container' + id + '"></li>');
+                    var container = $(_main).find('#chat-container' + id);
+                    if (container && container.length == 0) {
+                        container = getChatContainer(id, c.metadata.name);
+                        $(_main).append($(_li).append($(container)));
+                    } else {
+                        container.show();
+                    }
+                    c.on('data', function (data) {
+                        var _msg = $('<p class="chat-msg text-right">' + data + '</p>');
+                        $('#chat-text' + id).append(_msg)
+                        console.log('peer', peer);
+                    });
+                    c.on('close', function () {
+                        swal(c.peer + ' has left the chat.');
+                        $('#chat-container' + id).remove();
+                        delete connectedPeers[c.peer];
+                    });
+                    connectedPeers[c.peer] = c;
+                } else if (c.label === 'file') {
+                    c.on('data', function (data) {
+                        // If we're getting a file, create a URL for it.
+                        if (data.constructor === ArrayBuffer) {
+                            var dataView = new Uint8Array(data);
+                            var dataBlob = new Blob([dataView]);
+                            var url = window.URL.createObjectURL(dataBlob);
+                            $('#' + c.peer).find('.messages').append('<div><span class="file">' +
+                                c.peer + ' has sent you a <a target="_blank" href="' + url + '">file</a>.</span></div>');
+                        }
+                    });
+                    connectedPeers[c.peer] = c;
+                } else if (c.label === 'call') {
+
+                    connectedPeers[c.peer] = c;
+                }
+                console.log('connectedPeers', connectedPeers)
+            }
+
+
+            $(document).on('click', '.chat-header', function () {
+                $(this).siblings('.chat-box').toggle();
+                $(this).siblings('.chat-text').toggle();
+                $(this).siblings('.send').toggle();
+            });
+
+            $(document).on('click', '.send', function () {
+                var _id = $(this).attr('data-id');
+                var m = $('#chat-box' + _id).val();
+                if (m) {
+                    var _chatWindow = $('#chat-text' + _id);
+                    var _msg = $('<p class="chat-msg">' + $('#chat-box' + _id).val() + '</p>');
+                    $(_chatWindow).append(_msg);
+                    $('#chat-box' + _id).val('');
+                    sendMsg(m, _id);
+                }
+            });
+
+            $(document).on('click', '.chat-call-cancel', function (e) {
+                e.stopPropagation();
+                var id = $(this).attr('data-id');
+                $('#chat-container' + id).hide();
+            });
+
+         $(document).on('keypress', '.chat-box', function (key) {
+                console.log('evet', key)
+                if (key.keyCode == 13) {
+
+                    var _id = $(this).attr('data-id');
+                    var m = $('#chat-box' + _id).val();
+                    if (m) {
+                        var _chatWindow = $('#chat-text' + _id);
+                        var _msg = $('<p class="chat-msg">' + $('#chat-box' + _id).val() + '</p>');
+                        $(_chatWindow).append(_msg);
+                        $('#chat-box' + _id).val('');
+                        sendMsg(m, _id);
+                    }
+                    // handleMsg($(this).attr('data-id'), $('#chat-box' + $(this).attr('data-id')).val())
+                }
+            });
+
+            function handleMsg(_id, _msg) {
+                if (_id && _msg) {
+                    $('#chat-text' + _id).append(_msg);
+                    $('#chat-box' + _id).val('');
+                    sendMsg(_msg, _id);
+                }
+            }
+
+    });
+
+</script>

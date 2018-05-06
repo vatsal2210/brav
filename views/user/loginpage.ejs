@@ -1,0 +1,92 @@
+  <div class="login-container">
+    <div class="container">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center margin-top-login">
+        <div class="login-logo">
+          <img src="images/login-log.png" alt="" class="">
+        </div>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control txt-username" id="username" placeholder="Username">
+            <input type="password" class="form-control txt-username" id="password" placeholder="Password">
+            <p id="errMsg"></p>
+            <button type="button" class="btn btn-default login-btn" id="nextBtn">next</button>
+            <button type="button" class="btn btn-default login-btn" id="loginBtn">login</button>
+          </div>
+        </form>
+        <div class="password-link text-center">
+          <a href="password.html">Forgot your username?</a>
+        </div>
+        <div class="password-link text-center">
+          <a href="/register" id="register-user">New Here!!!</a>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <script src="../js/jquery.min.js"></script>
+
+  <script src="../js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#loginBtn').toggle();
+      $('#password').toggle();
+
+      $("#nextBtn").click(function () {
+        $('#errMsg').text('');
+        if (username && isValidEmail($('#username').val())) {
+          $('#loginBtn').toggle();
+          $('#password').toggle();
+          $('#nextBtn').toggle();
+        } else {
+          $('#errMsg').text('Enter valid username');
+        }
+
+      });
+
+      $("#loginBtn").click(function () {
+        $('#errMsg').text('');
+        if ($('#password').val() && isValidEmail($('#username').val())) {
+          let data = {
+            username: $('#username').val(),
+            password: $('#password').val()
+          };
+
+          $.ajax({
+            url: '/user/login',
+            method: 'POST',
+            data: data,
+            success: function (res) {
+              console.log('login res', res)
+              if (res.success) {
+                sessionStorage.setItem('bravUser', JSON.stringify(res.data));
+                window.location = "/mediator/" + res.data.id
+              } else {
+                $('#errMsg').text(res.msg);
+              }
+            },
+            error: function (err) {
+              console.log('Login error', err);
+              $('#errMsg').text(err.msg);
+            },
+            dataType: 'JSON'
+          });
+        } else {
+          if (!username)
+            $('#errMsg').text('Enter valid Password');
+          else
+            $('#errMsg').text('Enter valid Username');
+        }
+
+      });
+
+      function isValidEmail(email) {
+        if (email && (/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(email)) {
+          return true;
+        }
+        return false;
+      }
+    });
+
+  </script>

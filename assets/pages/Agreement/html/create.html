@@ -1,0 +1,11 @@
+<div class="flip-container">
+  <div class="flipper" ng-class="{'flipped': dynamics.drafting}">
+    <div class="front" ng-if="!dynamics.drafting">
+      <div ng-include="'/pages/Agreement/html/newPartial.html'">  </div>
+    </div>
+
+    <div class="back" ng-if="dynamics.drafting">
+      <div ng-include="'/pages/Agreement/html/editPartial.html'">  </div>
+    </div>
+  </div>
+</div>

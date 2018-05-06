@@ -1,0 +1,50 @@
+<div class="main-camera">
+  <div class="bottom-button text-center">
+    <ul>
+      <li id="camera" ng-click="MSC.toggleButtonFn('camera')">
+        <a href="#" ng-if="MSC.isCameraOn">
+          <i class="fa fa-video-camera" aria-hidden="true"></i>
+        </a>
+        <a href="#" ng-if="!MSC.isCameraOn">
+          <i class="fa fa-video-camera fa-video-camera-slash" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li id="microphone" ng-click="MSC.toggleButtonFn('microphone')">
+        <a href="#" ng-if="MSC.isMicrophoneOn">
+          <i class="fa fa-microphone" aria-hidden="true"></i>
+        </a>
+        <a href="#" ng-if="!MSC.isMicrophoneOn">
+          <i class="fa fa-microphone-slash" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li id="phone">
+        <a href="#">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="record" id="record-icon" ng-click="MSC.toggleButtonFn('record')">
+        <a href="#" ng-if="MSC.isRecordOn">
+          <i class="fa fa-square" aria-hidden="true"></i>
+        </a>
+        <a href="#" ng-if="!MSC.isRecordOn">
+          <i class="fa fa-pause" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li class="info">
+        <a href="#">
+          <i class="fa fa-info" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <video id="my-video" autoplay="true">
+</div>
+<!--main-camera division closed -->
+<div class="other-cameras">
+  <div id="clientvedios">
+
+  </div>
+  <div class="clearfix"></div>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="pa4" ng-init="loadOrg()">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw8 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">#</th>
+          <th class="fw6 tl pa3 bg-white">Name</th>
+          <th class="fw6 tl pa3 bg-white">Email</th>
+           <th class="fw6 tl pa3 bg-white">Verified</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <tr class="stripe-dark" ng-repeat="org in allOrg">
+          <td class="pa3">{{ $index + 1 }}</td>
+          <td>
+            <div class="mw4">{{org.name}}</div>
+          </td>
+          <td>
+            <div class="mw4">{{org.email}}</div>
+          </td>
+          <td>
+            <div class="mw4">{{ org.verified ? "YES" : "NO" }} </div>
+          </td>
+         </tr>
+         </tbody>
+    </table>
+       </div>
+</div>

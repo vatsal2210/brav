@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bravApp.bravOnes" >
+<head>
+  <meta charset="UTF-8">
+  <title>Brāv</title>
+
+  <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script src="js/dependencies/jquery.min.js"></script>
+  <script type="text/javascript" src="js/dependencies/bootstrap.min.js"></script>
+  <script src="js/dependencies/angular.js"></script> <!-- this is angular 1.4.0 non minified-->
+  <script src="js/dependencies/angular-route.js"></script>
+  <script src="js/dependencies/angular-ui-router.min.js"></script>
+  <script src="js/dependencies/angular-animate.min.js"></script>
+  <script src="js/dependencies/angular-aria.min.js"></script>
+  <script src="js/dependencies/angular-messages.min.js"></script>
+
+  <script src="js/chatDep/simplewebrtc.bundle.js"></script>
+
+  <!--
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.min.js"></script>
+  -->
+
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,800' rel='stylesheet' type='text/css'>
+
+  <!--<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">  -->
+  <link rel="stylesheet" href="styles/angular-material.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/custom_style.css">
+
+  <script src="js/dependencies/angular-material.min.js"></script>
+  <!--<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>-->
+
+  <script src="js/bravServices/payment.module.js"> </script>
+  <script src="pages/BravOnes/bravOnes.module.js"> </script> 
+
+</head>
+<body ng-controller="indexCtrl" >
+
+<div >
+<nav class="navbar navbar-default navbar-fixed-top">
+
+<div id="brav-nav">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#first-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar" style="background-color:white"></span>
+        <span class="icon-bar" style="background-color:white"></span>
+        <span class="icon-bar" style="background-color:white"></span>
+      </button>
+      <div><img src="img/brav-logo.png"></div>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="first-nav" >
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-if="appswitch.isLoggedIn" ng-click="logout()"> <a href="#"> Sign Out </a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</div>
+
+<div class="navbar-header" ng-if="appswitch.isLoggedIn && bar.show">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-if="appswitch.isLoggedIn && bar.show">
+  <ul class="nav navbar-nav" ng-if="appswitch.type==2">
+    <li><a href="#/app" > Home </a></li>
+    <li><a href="#/m/account" > Profile </a></li>
+    <li><a href="#/m/s1"> Planned Sessions </a></li>
+    <li><a href="#/m/s2"> My Sessions </a></li>
+	<li><a href="#/m/s3"> Create Sessions </a></li>
+    <li><a href="#/m/plans">Plans </a></li>
+  </ul>
+</div>
+
+  <div class="collapse navbar-collapse" ng-if="!bar.show">
+    <button class="btn btn-danger" ng-click="closeChatClicked()"> Close the Session </button>
+
+    <button ng-if="bar.a" class="btn btn-danger" ng-click="barChatClickedA(false)"> My Audio Off </button>
+    <button ng-if="!bar.a" class="btn btn-info" ng-click="barChatClickedA(true)"> My Audio ON </button>
+    <button ng-if="bar.v" class="btn btn-danger" ng-click="barChatClickedV(false)"> My Video Off </button>
+    <button ng-if="!bar.v" class="btn btn-info" ng-click="barChatClickedV(true)"> My Vidio ON </button>
+  </div>
+  <div class="collapse navbar-collapse" ng-if="!bar.show">
+    <table class="table" >
+      <tr>
+      <th> <center>Session</center> </th>
+      <th> <center>Note</center> </th>
+      <th> <center>Agreed Date</center> </th>
+      <th> <center>Agreed Time & TZ</center> </th>
+      </tr>
+      <tr>
+      <td>{{ seshInfo.sesh.title }} </td>
+      <td>{{ seshInfo.sesh.note }} </td>
+      <td>{{ seshInfo.dateslot }} </td>
+      <td>{{ seshInfo.timeslot +' : '+item.tz}}</td>
+      </tr>
+    </table>
+  </div>
+</nav>
+</div>
+<div layout="column" id="main" style="margin-top: 140px;" ng-init="onload()">
+  <!-- angular templating -->
+  <!-- this is where content will be injected -->
+  <div ng-view></div>
+
+  
+</div>
+</body>
+
+
+
+<style>
+  .my-repeat-animation.ng-leave.ng-leave-active,
+  .my-repeat-animation.ng-enter {
+    opacity: 0;
+    -webkit-transition: opacity 300ms linear;
+    -moz-transition: opacity 300ms linear;
+    transition: opacity 300ms linear;
+  }
+</style>
+
+</html>

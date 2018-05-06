@@ -1,0 +1,32 @@
+<md-dialog aria-label="Checklist">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Checklist</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div class="mt2 pa2 custom_menu notebook" flex-order="1" flex-order-lg="0">
+          <h1 class="f4 black-50 pa2 ma2">Checklist <div class="f6">(click one each to check, and must check all before finalizing)</div></h1>
+          <div ng-repeat="(i,boxItem) in helperStuff.checklist track by i">
+              <div class="pointer fw4 user-select-none pa3 outline-0" ng-model="boxItem.checked" ng-class="{'strike': boxItem.checked}" ng-click="boxItem.checked = !boxItem.checked">{{boxItem.item}}</div>
+          </div>
+
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button class="md-raised md-primary" ng-click="submit()">
+        Submit
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

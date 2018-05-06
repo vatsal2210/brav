@@ -1,0 +1,16 @@
+<h1 class="f1 black-60 ma2 pa2 center">Read Agreement</h1>
+
+<div layout="column" layout-align="center center">
+   <div class="agreement vh-100 lh-copy w-100 pre-wrap outline-0 fw2 black-50" layout="column" layout-align="center center">
+    <div ng-bind-html="content | sce" class="w-60 mb4 vh-100 md-whiteframe-12dp overflow-y-auto pa2 ma2"></div>
+  </div>
+
+  <div layout="row" layout-align="center" class="pa2 ma2">
+
+      <md-button class="md-raised md-accent" ng-if="READ_NON_FINAL" ng-click="lastSaved()">Refresh (Load latest available modifications)</md-button>
+      <md-button class="md-raised md-accent" ng-if="READ_FINAL && !READY_TO_SIGN" ng-click="readyToSign()">Ready To Sign</md-button>
+      <md-button class="md-raised md-primary" ng-if="READ_FINAL && READY_TO_SIGN" ng-click="signOnTheAgreement(true)">Sign As Accepted</md-button>
+      <md-button class="md-raised md-warn" ng-if="READ_FINAL && READY_TO_SIGN" ng-click="signOnTheAgreement(false)">Sign As Denied</md-button>
+      <md-button class="md-raised" ng-disabled="true" ng-if="READ_SIGNED">{{mySign?'Accepted':'Rejected'}}</md-button>
+  </div>
+</div>

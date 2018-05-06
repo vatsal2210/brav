@@ -1,0 +1,55 @@
+<section class="pa4 black-80">
+  <form class="measure center" novalidate>
+    <div ng-show="showForm==0">
+      <fieldset id="sign_up" class="tc ba b--transparent ph0 mh0">
+      <legend class="f4 fw6 ph0 mh0"><h1 class="f1 black-70">Sign in to Brāv (beta)</h1></legend>
+      <a href="/#/reg" class="blue link">New to Brāv ? Sign up! </a>
+      <div class="mt3">
+        <label class="fw6 lh-copy f6" for="email-address">Email</label>
+        <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="user.email" type="email" name="email-address"  id="email-address" placeholder="Email">
+      </div>
+      <div class="mv3">
+        <label class="db fw6 lh-copy f6" for="password">Password</label>
+        <input class="br3 b pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="user.pw" type="password" name="password"  id="password" placeholder="Password">
+      </div>
+      </fieldset>
+      <div class="lh-copy mb3 tc">
+        <a href="" class="f6 link dim blue db" ng-click="forgotPass()">Forgot your password?</a>
+      </div>
+      <div class="tc">
+        <input class="b ph3 pv2 input-reset ba b--black-20 hover-bg-moon-gray br3 bg-transparent pointer f6 dib" type="submit" ng-click="login(user)" value="Sign in">
+      </div>
+    </div>
+
+    <div ng-show="showForm==1" class="tc">
+          <h1 class="f2 black-70"> Enter your email <br /> A verification code(OTP) will be sent on your email</h1>
+          <div class="mt3">
+            <label class="db b lh-copy f6" for="email">Enter your Email</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="user1.email" type="text" id="email" placeholder="Email">
+          </div>
+          <div class="mt3">
+            <label class="db b lh-copy f6" for="newPass">New Password</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="user1.pw" type="password" id="newPass" placeholder="New Password">
+          </div>
+          <div class="tc ma2">
+            <button class="b ph3 pv2 input-reset ba b--black-20 hover-bg-moon-gray br3 bg-transparent pointer f6 dib" type="button"  ng-click="sendOTP()">Send OTP</button>
+            <button class="b ph3 pv2 input-reset ba b--black-20 hover-bg-moon-gray br3 bg-transparent pointer f6 dib" type="button"  ng-click="goBackAt(0)">Back</button>
+          </div>
+   </div>
+
+    <div ng-show="showForm==2" class="tc">
+          <h1 class="f2 black-70"> A verification code(OTP) is sent on your email <br />Please Verify !!</h1>
+          <div class="mt3">
+            <label class="db b lh-copy f6" for="otp">Verification Code</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="user1.otp" type="text" id="otp" placeholder="OTP that you recieved via email">
+          </div>
+          <div class="tc ma2">
+            <button class="b ph3 pv2 input-reset ba b--black-20 hover-bg-moon-gray br3 bg-transparent pointer f6 dib" type="button"  ng-click="verifyOTP()">Verify OTP</button>
+            <button class="b ph3 pv2 input-reset ba b--black-20 hover-bg-moon-gray br3 bg-transparent pointer f6 dib" type="button"  ng-click="goBackAt(1)">Back</button>
+          </div>
+   </div>
+
+  </form>
+
+
+</section>

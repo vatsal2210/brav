@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bravApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Brāv SignIn</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,800' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="styles/a2k_custom_style.css">
+    <link rel="stylesheet" type="text/css" href="styles/angular-material.min.css">
+
+    <!-- <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-support.css"> -->
+
+    <script src="js/browserDetection.js"></script>
+
+    <script src="js/dependencies/angular.js"></script>
+    <!-- this is angular 1.4.0 non minified-->
+    <script src="js/dependencies/angular-route.js"></script>
+    <script src="js/dependencies/angular-aria.min.js"></script>
+    <script src="js/dependencies/angular-messages.min.js"></script>
+    <script src="js/dependencies/angular-animate.min.js"></script>
+    <script src="js/dependencies/angular-material.min.js"></script>
+
+    <script src="js/dependencies/utils.js"></script>
+    <script src="pages/BravAuth/BravAuthModule.js"></script>
+    <script src="js/bravApp.js"></script>
+    <style>
+        .new--background {
+            background: #598EBF;
+        }
+        
+        .new--top-right-button {
+            border: solid 1px #84b0d6;
+        }
+    </style>
+</head>
+
+<body ng-controller="indexCtrl" class="new--background">
+
+    <md-toolbar style="height: 6rem;" layout-align="center center">
+        <div class="md-toolbar-tools">
+            <img src="img/edited-logo.png" alt="Brav" class="logo" />
+            <span flex></span>
+            <md-button ng-if="!appswitch.isLoggedIn" class="new--top-right-button" aria-label="Register" ng-href="#/reg">Register</md-button>
+            <md-button ng-if="!appswitch.isLoggedIn" class="new--top-right-button" aria-label="Login" ng-href="#/login">Login</md-button>
+        </div>
+    </md-toolbar>
+
+    <nav class="db dt-l w-100 border-box pa2 pr5-l brav-nav-color">
+
+        <div ng-if="appswitch.isLoggedIn" class="mt3 fl db dtc-l v-mid tc pa3 hamburger hamburger--slider outline-0" ng-class="{'is-active': activeSidebar}" ng-click="toggleSidebar()">
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
+        </div>
+
+        <div class="w-100 tr">
+            <ul class="list">
+                <li ng-if="appswitch.isLoggedIn" class="ph3 pv0 f6 dib dropdown">
+                    <a ng-click="openPowerButton($event)" class="white br-100 outline-0 b--white  ba bw1  ph3 pv3 link dim f6 dib" href="#">
+                ⏻
+              </a>
+                    <ul class="list absolute pa3 brav-nav-color ma1 b--white  ba bw1">
+                        <li class="pointer  tl">
+                            <a ng-click="settings()" class="pa3 db w-100 link" href="#">
+                      Settings
+                    </a>
+                        </li>
+                        <li class="pointer tl">
+                            <a ng-click="notifications()" class="pa3 db w-100 link" href="#">
+                      Notifications
+                    </a>
+                        </li>
+                        <li class="pointer tl">
+                            <a ng-click="logout()" class="pa3 db w-100 link" href="#">
+                      Sign Out
+                    </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="main" ng-init="onload()">
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div class="mainView">
+            <div ng-view></div>
+        </div>
+
+    </div>
+
+    <form id="apploader" method="POST" action="/application"></form>
+
+</body>
+
+</html>

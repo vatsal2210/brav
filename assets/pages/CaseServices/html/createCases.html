@@ -1,0 +1,37 @@
+<div class="center">
+  <div class="center">
+    <h1>Create a case</h1>
+     <md-subheader class="md-primary">Cases help you to well organize your legal matters, A Case encapsulates many sessions related to same conflict and hence, their management is easier</md-subheader>
+    </div>
+
+  <div layout="row" layout-align="center center">
+    <md-content layout-padding>
+        <form name="caseForm" autocomplete="off">
+
+          <md-input-container class="md-block">
+            <label>Title</label>
+            <input required type="text" name="title" ng-model="case.title" maxlength="32" />
+
+            <div ng-messages="caseForm.title.$error" role="alert">
+              <div ng-message-exp="['required', 'maxlength']">
+                Please enter Case Title (max 32 characters).
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Info</label>
+            <input required type="text" name="info" ng-model="case.info" />
+
+            <div ng-messages="caseForm.info.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Please enter Case Info.
+              </div>
+            </div>
+          </md-input-container>
+          <md-button class="md-raised md-primary" type="submit" ng-click="createCase(case)">Create A Case</md-button>
+
+        </form>
+    </md-content>
+  </div>
+</div>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bravApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Brāv</title>
+    <script src="js/browserDetection.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,800' rel='stylesheet' type='text/css' />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+
+    <link rel="stylesheet" type="text/css" href="styles/sweetalert2.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/medium-editor.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/medium-editor-bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="styles/md-data-table.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="styles/angular-material.min.css" />
+
+    <!-- Tachyons related  -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-max-widths.min.css" />
+    <!-- mw2 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-widths.min.css" />
+    <!-- w0..w5, w-50, vw-100 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-heights.min.css" />
+    <!-- h0..h5, h-50, vh-100 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-skins.min.css" />
+    <!-- black, white, bg-green -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-spacing.min.css" />
+    <!-- ma2..pa2 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-type-scale.min.css" />
+    <!-- f1..f6 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-box-shadow.min.css" />
+    <!-- shadow-1 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-overflow.min.css" />
+    <!-- overflow -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-outlines.min.css" />
+    <!-- outline-0 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-borders.min.css" />
+    <!-- ba1 -->
+    <link rel="stylesheet" type="text/css" href="styles/tachyons-border-radius.min.css" />
+    <!-- br3 -->
+
+    <link rel="stylesheet" type="text/css" href="styles/trix.css" />
+    <link rel="stylesheet" type="text/css" href="styles/a2k_custom_style.css" />
+
+    <script src="js/dependencies/angular.js"></script>
+    <!-- this is angular 1.4.0 non minified-->
+    <script src="js/dependencies/angular-animate.min.js"></script>
+    <script src="js/dependencies/angular-aria.min.js"></script>
+    <script src="js/dependencies/angular-material.min.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <!--
+  <script src="js/dependencies/lodash.min.js"></script>
+  <script src="js/dependencies/angular-material-icons.min.js"></script>
+  <script src="js/dependencies/angular-sanitize.min.js"></script>
+  <script src="js/dependencies/md-data-table-templates.min.js"></script> -->
+    <script src="js/dependencies/md-data-table.min.js"></script>
+
+    <script src="js/dependencies/angular-messages.min.js"></script>
+    <script src="js/dependencies/angular-route.js"></script>
+
+    <script src="js/dependencies/sweetalert2.min.js"></script>
+    <script src="js/dependencies/trix.js"></script>
+    <script src="js/dependencies/angular-trix.min.js"></script>
+    <script src="js/dependencies/clipboard.min.js"></script>
+    <script src="js/dependencies/ngclipboard.min.js"></script>
+    <script src="js/dependencies/swrtc_latest_v2.js"></script>
+
+    <!--  Recycle bin Commentbox
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <script src="js/dependencies/adapter.js"></script>
+
+  <script src="js/dependencies/adapter.js"></script>
+  <script src="js/dependencies/simplepeer.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/dependencies/sails.io.js"></script>
+
+  -->
+
+
+    <script src="js/dependencies/moment.min.js"></script>
+    <script src="js/dependencies/utils.js"></script>
+    <script src="pages/BravAuth/BravAuthModule.js"></script>
+    <script src="pages/BravAuth/bravConfig.js"></script>
+
+    <script src="<%= data.module %>">
+    </script>
+    <script src="<%= data.ctrls %>">
+    </script>
+
+    <!-- CaseServices start -->
+
+    <!-- just to test commit for third time -->
+    <script src="pages/CaseServices/caseServices.module.js">
+    </script>
+    <script src="pages/CaseServices/services/msApi.js">
+    </script>
+    <script src="pages/CaseServices/services/chatApi.js">
+    </script>
+    <script src="pages/CaseServices/services/caseApi.js">
+    </script>
+
+    <script src="pages/CaseServices/controllers/cases/allCasesCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/cases/createCasesCtrl.js">
+    </script>
+
+    <script src="pages/CaseServices/controllers/sessions/createSessionsCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/sessions/selectMediatorCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/sessions/allRequestsCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/sessions/allSessionsCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/sessions/sessionsRequestCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/sessions/mediationSessionCtrl.js">
+    </script>
+    <script src="pages/CaseServices/controllers/sessions/test_sessionCtrl.js">
+    </script>
+
+    <!-- CaseServices end -->
+
+    <!-- Agreements start -->
+
+    <script src="pages/Agreement/agreement.module.js">
+    </script>
+    <script src="pages/Agreement/controllers/agreementCreateCtrl.js">
+    </script>
+    <script src="pages/Agreement/controllers/draftAgreementsListCtrl.js">
+    </script>
+    <script src="pages/Agreement/controllers/read/agreementReadCtrl.js">
+    </script>
+    <script src="pages/Agreement/controllers/read/agreementSigningRequestsListCtrl.js">
+    </script>
+    <script src="pages/Agreement/controllers/read/sharedAgreementsListCtrl.js">
+    </script>
+    <script src="pages/Agreement/controllers/read/signedAgreementsListCtrl.js">
+    </script>
+
+    <!-- Agreements end -->
+
+
+    <script src="pages/Payments/payment.module.js">
+    </script>
+    <script src="pages/Payments/payment.easy.js">
+    </script>
+    <style>
+        md-toolbar {
+            box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28) !important;
+        }
+        
+        .logo.new--brand-img {
+            width: 50px !important;
+            height: 50px !important;
+        }
+        
+        .new--header-icons {
+            min-width: 10px;
+        }
+        
+        .new--dropdown-icons {
+            width: 10px;
+            height: 10px;
+        }
+        
+        .new--remove-btton-style {
+            min-width: 45px !important;
+        }
+    </style>
+</head>
+
+<body ng-controller="indexCtrl" layout="column">
+    <md-toolbar layout="row" layout-align="center center" calss="new--header">
+        <div class="md-toolbar-tools">
+            <img src="img/edited-logo.png" alt="Brav" class="logo new--brand-img" />
+            <md-button class="new--header-icons" aria-label="Refresh Current Page" ng-if="reloadCurrentPageBtnShow" ng-click="reloadCurrentPage()">
+                <md-icon md-svg-icon="icons/new/ic_refresh_white_18px.svg" id="refresh"></md-icon>
+            </md-button>
+            <md-button class="new--header-icons" aria-label="Full Screen" ng-if="isFullScreen" ng-click="toggleFullScreen()">
+                <md-icon md-svg-icon="icons/ic_fullscreen_exit_white_48px.svg" ng-if="isFullScreen" id="ex_fscreen"></md-icon>
+            </md-button>
+            <md-button class="new--header-icons" aria-label="Full Screen off" ng-if="!isFullScreen" ng-click="toggleFullScreen()">
+                <md-icon md-svg-icon="icons/ic_fullscreen_white_48px.svg" ng-if="!isFullScreen" id="fscreen"></md-icon>
+            </md-button>
+            <span flex></span>
+            <md-button class="new--header-icons" aria-label="Chat" ng-if="showChatIcon" ng-click="toggleChatNav()">
+                <md-icon md-svg-icon="icons/ic_chat_white_48px.svg" id="chat"></md-icon>
+            </md-button>
+        </div>
+
+        <md-menu>
+            <md-button aria-label="Options" class="md-icon-button" ng-click="$mdOpenMenu()">
+                <md-icon md-menu-origin md-svg-icon="icons/new/ic_settings_power_white_18px.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item md-menu-align-target>
+                    <md-button ng-href="#/profile">
+                        My Account
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-href="#/">
+                        Settings
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="logout()" ng-href="#">
+                        Logout
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+
+    </md-toolbar>
+
+    <md-content class="container" ng-controller="sidebarLinksCtrl" ng-init="loadSideBarLinks()" layout="row" flex>
+
+        <!-- head -->
+        <md-sidenav class="md-sidenav-left white" md-component-id="left" md-whiteframe="4" md-is-locked-open="true" style="width: 80px !important;">
+            <md-list flex ng-mouseenter="inOrOutofNav(true)" ng-mouseleave="inOrOutofNav(false)" class="pa2">
+                <md-list-item ng-click="callOpenSideNavFromParent(link)" aria-label="{{link.title}}" ng-repeat-start="link in links" ng-if="!link.disable">
+
+                    <md-button class="new--remove-btton-style" ng-href="{{link.href}}" ng-click="openSideNav(link)">
+                        <img ng-src="{{link.src}}" class="pa1 ma0" width="40" height="40" />
+                        <md-tooltip md-direction="right" class="large f3 white">{{link.title}}</md-tooltip>
+                    </md-button>
+
+                </md-list-item>
+
+                <md-list-item ng-show="outOfNav && link.open" ng-repeat-end ng-repeat="sublink in link.sub" aria-label="{{sublink.title}}">
+
+                    <a ng-href="{{sublink.href}}">
+                        <img ng-src="{{sublink.src}}" class="pa1 ma0" width="40" height="40" />
+                        <md-tooltip md-direction="right" class="large f3 white">{{sublink.title}}</md-tooltip>
+                    </a>
+                </md-list-item>
+            </md-list>
+
+        </md-sidenav>
+
+        <md-content flex ng-init="onload()" class="ph2 brav-bg">
+
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+            <div ng-view flex></div>
+
+        </md-content>
+
+    </md-content>
+
+    </div>
+
+</body>
+
+</html>

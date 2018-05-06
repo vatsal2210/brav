@@ -1,0 +1,86 @@
+<div class="pa4" ng-init="loadBoilerPlate()">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw8 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">#</th>
+          <th class="fw6 tl pa3 bg-white">Boiler Plate Name</th>
+          <th class="fw6 tl pa3 bg-white">Published</th>
+          <th class="fw6 tl pa3 bg-white">Edit</th>
+          <th class="fw6 tl pa3 bg-white">Delete</th>
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <tr class="stripe-dark" ng-repeat="bp in allBp">
+          <td class="pa3">{{ $index + 1 }}</td>
+          <td class="pa3">{{bp.name}}</td>
+          <td class="pa3"> {{ bp.isFinal ? "YES" : "NO"}} </td>
+          <td>
+            <div class="mw4">
+              <button type="button" class="pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-blue pointer" ng-click="editBP(bp)">Edit</button>
+            </div>
+          </td>
+           <td>
+            <div class="mw4">
+              <button type="button" class="pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-blue pointer" ng-click="deleteBP(bp._id)">Delete</button>
+            </div>
+          </td>
+
+         </tr>
+         </tbody>
+    </table>
+       </div>
+</div>
+
+<!--
+<div class="center">
+
+  <div ng-if="!allBp.length">
+    <h1 class="f1 black-60">No Boilerplates are Provided Yet</h1>
+    <md-button class="md-raised md-primary" ng-href="#/agreements/bp">Create a Boilerplate</md-button>
+  </div>
+
+  <div ng-if="allBp.length">
+    <h1 class="f1 black-60">All Boilerplates</h1>
+    <md-card style="margin:0px">
+        <md-input-container style="margin:15px;">
+            <label>Filter Results</label>
+            <input type="text" ng-model="filterBoilerplate">
+        </md-input-container>
+
+        <div ng-hide="true">
+            {{(filteredBoilerplates = (allBp | filter: filterBoilerplate))}}
+        </div>
+    </md-card>
+
+    <md-table-container>
+      <table md-table>
+        <thead md-head md-order="_id">
+          <tr md-row>
+            <th md-column md-order-by="_id">#</th>
+            <th md-column md-numeric>Boilerplate Name</th>
+            <th md-column md-numeric>Finalized</th>
+            <th md-column md-numeric>Actions</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row ng-repeat="agreement in filteredBoilerplates | limitTo: tableDefaultOptions.query.limit : (tableDefaultOptions.query.page -1) * tableDefaultOptions.query.limit">
+            <td md-cell>{{ (tableDefaultOptions.query.page  - 1) * tableDefaultOptions.query.limit + $index + 1 }}</td>
+            <td md-cell>{{agreement.title}}</td>
+            <td md-cell>{{callhumanReadableDate(agreement.createdAt)}}</td>
+            <td md-cell>{{agreement.description.length > 100 ? agreement.description.substring(0,100) + "..." : agreement.description}}</td>
+            <td md-cell><span ng-repeat="a in agreement.involvedParties" class="md-button md-raised" ng-disabled="true">{{a}}</span></td>
+            <td md-cell><md-button class="md-raised md-primary" ng-click="view(agreement._id)">Edit</md-button></td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+
+    <md-table-pagination md-limit="tableDefaultOptions.query.limit" md-limit-options="tableDefaultOptions.limitOptions" md-page="tableDefaultOptions.query.page"
+      md-total="{{allBp.length}}" md-page-select="true" md-boundary-links="true">
+    </md-table-pagination>
+
+  </div>
+
+</div>
+ -->

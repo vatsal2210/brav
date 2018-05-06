@@ -1,0 +1,31 @@
+<header class="tc ph4 ma0">
+       <div>
+      <form class="measure center" autocomplete="off">
+        <!-- on page load request get all cases  -->
+          <h1 class="f1 black-70 tc">Create New Snippet</h1>
+          <div class="mt3 tc">
+            <label class="fw6 lh-copy f6" for="atitle">Enter Text</label>
+            <textarea  class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" rows="10" cols="50" ng-model="snippet.content" type="text" name="stitle" id="stitle" placeholder="Enter the snippet">
+            </textarea>
+
+          </div>
+           <div class="mv3 tc">
+            <label class="db fw6 lh-copy f6" for="SnippetTagsArray">Insert Tags</label>
+            <input class="br3 pa2 input-reset ba b--black-20 bg-transparent w-100" ng-model="snippet.tags" type="text" name="SnippetTagsArray"  id="SnippetTagsArray" placeholder="Enter the tags involved in the dispute" ng-keyup="$event.keyCode == 13 && insertSnippetTag(snippet.tags)">
+            <div class="red b pa2" ng-if="errorTag != ''">{{errorTag}}</div>
+            <div class="flex flex-wrap mv3 tc" ng-if="tagsArray.length != 0">
+                <span ng-repeat="sniptag in SnippetTagsArray" class="flex-1 pa2 br4 ma2 bg-brav-secondary-dark-blue white" ng-click="removeTag($index)">{{sniptag}} </span>
+            </div>
+          </div>
+          
+          <div class="flex w-100 pb4">
+            <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-gray white hover-bg-blue pointer" ng-click="createSnippet(snippet)" >Create Snippet</button>
+            </div>
+        </form>
+    </div>
+      </div>
+
+
+    </div>
+  </div>
+</header>

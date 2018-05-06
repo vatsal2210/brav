@@ -1,0 +1,56 @@
+<div class="pa4" ng-init="loadMed()">
+  <div class="overflow-auto">
+    <table class="f6 w-100 mw8 center" cellspacing="0">
+      <thead>
+        <tr class="stripe-dark">
+          <th class="fw6 tl pa3 bg-white">#</th>
+          <th class="fw6 tl pa3 bg-white">Name</th>
+          <th class="fw6 tl pa3 bg-white">Email</th>
+          <th class="fw6 tl pa3 bg-white">Brāv One</th>
+          <th class="fw6 tl pa3 bg-white">Pro</th>
+          <!--  <th class="fw6 tl pa3 bg-white">Revoke Account</th>
+          <th class="fw6 tl pa3 bg-white">RevokeProStatus</th> -->
+        </tr>
+      </thead>
+      <tbody class="lh-copy">
+        <tr class="stripe-dark" ng-repeat="med in allMed">
+          <td class="pa3">{{ $index + 1 }}</td>
+          <td>
+            <div class="mw4">{{med.name}}</div>
+          </td>
+          <td>
+            <div class="mw4">{{med.email}}</div>
+          </td>
+          <td>
+            <div class="mw4" ng-if="!med.profile.approved"> 
+              <button type="button" ng-model="a" class="pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-blue pointer" ng-click="approveMed($index , med.email)">Approve</button>
+            </div>  
+            <div class="mw4" ng-if="med.profile.approved"> 
+              <button type="button" ng-model="b" class="pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-blue pointer" ng-click="revokeMed($index , med.email)">Revoke </button>
+            </div>                 
+          </td>
+          <td>
+            <div class="mw4"> 
+              <button type="button" ng-model="c" ng-if="med.profile.proMediatorStatusRequested  && !med.profile.proMediatorStatusApproved" class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-green pointer" ng-click="makePro($index ,med.email)" > 
+              Make Pro </button>
+            </div> 
+            <div class="mw4"> 
+              <button type="button" ng-model="c" ng-if="med.profile.proMediatorStatusRequested && med.profile.proMediatorStatusApproved" class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-green pointer" ng-click="revokePro($index ,med.email)"  > 
+              Revoke Pro </button>
+            </div> 
+            <div class="mw4"> 
+              <button type="button" ng-model="c" ng-if="!med.profile.proMediatorStatusRequested" class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-green pointer" ng-disabled="true" > 
+              No Request </button>
+            </div>                 
+          </td>
+          
+          <!--  <td> <div class="mw4"> <button type="button" ng-model="c"  class="flex-1 pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-red pointer" ng-click="revokeMedAcc({{med.name}})">Revoke</button></div>                 
+          </td>
+          <td>
+           <div class="mw4"> <button type="button" ng-model="d" class="pa3 ma1 bw0 br-pill outline-0 hover-bg-yellow bg-blue pointer"  ng-click="revokeProStatus({{med.name}})">Revoke Pro</button></div>                 
+          </td> -->
+        </tr>
+       </tbody>
+    </table>
+       </div>
+</div>

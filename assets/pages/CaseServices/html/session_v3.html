@@ -1,0 +1,83 @@
+<div class="w-100 tc" id="mediationSession" ng-init="initcheck()">
+<script>
+  console.log('------------Running raw JS here')
+</script>
+<style>
+html {
+  background: #123;
+  color: white;
+}
+.videoContainer {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    margin: 2rem;
+    box-shadow: 15px 18px 10px #333;
+}
+#mainVideoContainer {
+    display: flex;
+    justify-content: center;
+}
+#localVideo {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    box-shadow: 15px 18px 10px #333;
+}
+.videoContainer video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.connectionstate {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    color: #fff
+}
+
+
+</style>
+      <div class="mb3 flex center">
+        <md-button type="button" class="md-raised md-accent" ng-show="!dynamics.ready && !dynamics.started" ng-click="reloadNowToGetMediaAccess()"> Ready to start </md-button>
+        <md-button type="button" class="md-raised md-accent" ng-show="dynamics.ready && !dynamics.started" ng-click="startSession()"> Start Session</md-button>
+        <md-button type="button" class="md-raised md-accent" ng-show="dynamics.started" ng-click="endSession()"> End Session</md-button>
+        <div ng-if="dynamics.started">
+          <md-button class="md-raised md-accent" aria-label="video_off" ng-if="dynamics.video" ng-click="dynamics.toggleVideo()">
+              <md-icon md-svg-icon="icons/ic_videocam_off_white_48px.svg" id="off_video"></md-icon>
+          </md-button>
+          <md-button class="md-raised md-accent" aria-label="video_on" ng-if="!dynamics.video" ng-click="dynamics.toggleVideo()">
+              <md-icon md-svg-icon="icons/ic_videocam_white_48px.svg" id="on_video"></md-icon>
+          </md-button>
+          <md-button class="md-raised md-accent" aria-label="audio_off" ng-if="dynamics.audio" ng-click="dynamics.toggleAudio()">
+              <md-icon md-svg-icon="icons/ic_mic_off_white_48px.svg" id="off_audio"></md-icon>
+          </md-button>
+          <md-button class="md-raised md-accent" aria-label="audio_on" ng-if="!dynamics.audio" ng-click="dynamics.toggleAudio()">
+              <md-icon md-svg-icon="icons/ic_mic_white_48px.svg" id="on_audio"></md-icon>
+          </md-button>
+        </div>
+
+        <!--<button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 white bg-brav-secondary-dark-blue pointer" ng-click="dynamics.toggleAudio()" ng-show="dynamics.started">
+          Audio: {{!dynamics.audio ? 'ON' : 'OFF'}}
+        </button>
+        <button type="button" class="flex-1 pa3 ma2 bw0 br-pill outline-0 bg-black-50 white pointer" ng-click="dynamics.toggleVideo()" ng-show="dynamics.started">
+          Video: {{!dynamics.video ? 'ON' : 'OFF'}}
+        </button> -->
+      </div>
+      <div class="flex justify-around">
+        <div id="main" class="flex flex-3 justify-center vh-75 items-center flex-column">
+            <h1 class="f3 dib"> {{stuff.sessionObject.title}} </h1>
+            <div id="mainVideoContainer" layout="row" class="center">
+              <video autoplay id="localVideo" class=" ma2"></video>
+            </div>
+          <div id="playlist" layout="row" layout-align="center" ng-if="dynamics.started">
+          <!--div id="playlist" class="overflow-x-auto dib nowrap ba ma2 bw3 b--double b--gray"-->
+          </div>
+        </div>
+      </div>
+      <div flex="noshrink" ng-if="dynamics.started">
+        <div ng-include="'/pages/CaseServices/html/chatNav.html'">  </div>
+      </div>
+</div>
+

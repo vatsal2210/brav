@@ -1,0 +1,81 @@
+<div ng-cloak>
+
+  <md-content layout-padding>
+      <div layout="row" layout-xs="column" layout-sm="column" layout-align="center">
+        <h3> Amount: {{amount}} </h3>
+        <br />
+        <md-subheader> {{erMsg}}</md-subheader>
+      </div>
+
+      <div layout-gt-sm="row">
+
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container class="md-block" flex="50" flex-sm="80" layout-sm="row">
+          <label>Card Number (16 digits)</label>
+          
+          <input ng-model="card.number" ng-pattern="/^[0-9]{16}$/" />
+        </md-input-container>
+        
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+
+        <md-input-container class="md-block" flex="30" flex-sm="50" layout-sm="row">
+          <label> CVV/ CVC </label>
+          <input ng-model="card.cvc" ng-pattern="/^[0-9]{3}$/" />
+        </md-input-container>
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+      </div>
+      <div layout-gt-sm="row" align="center">
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+        
+        <md-input-container class="md-block" flex="30" flex-sm="80" layout-sm="row">
+          <label>Expiry Month</label>
+          <md-select ng-model="card.month" required>
+            <md-option ng-repeat="mon in months" value="{{mon}}" >{{mon}}</md-option>
+          </md-select>
+        </md-input-container>
+        <div flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+        </div>
+        <md-input-container class="md-block" flex="50" flex-sm="80" layout-sm="row">
+          <label>Expiry Year</label>
+          <md-select ng-model="card.year" required>
+             <md-option ng-repeat="yr in years" value={{yr}}>{{yr}}</md-option>
+         </md-select>
+        </md-input-container>
+        <style>
+          /*
+           * The Material system does not currently allow targeting the body element, so this
+           * must go here in the HTML.
+           */
+          body[dir=rtl] .hint {
+            right: 2px;
+            left: auto;
+          }
+        </style>
+      </div>
+
+      <div ng-if="!loading" layout="row" layout-xs="row" layout-sm="row" layout-align="center">
+        <md-button type="submit" ng-click="cancel()" >Cancel</md-button>
+        <md-button type="submit" ng-click="proceed()" >Pay</md-button>
+      </div>
+      <div ng-if="loading" layout="row" layout-sm="column" layout-align="space-around">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>   
+      </div>
+      <div layout="row" flex="5" hide-xs hide-sm>
+          <!-- Spacer //-->
+      </div>
+
+  </md-content>
+
+  
+
+</div>

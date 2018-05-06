@@ -1,0 +1,31 @@
+<section class="module" ng-if="chatApi.selectedChat">
+
+  <header class="top-bar">
+
+    <div class="left">
+      <div class="f3">{{chatApi.selectedChat}}</div>
+    </div>
+    <span class="f3 right pointer" ng-click="chatApi.closeChat()">X</span>
+  </header>
+
+  <ol class="discussion" id="list_of_messages">
+    <li ng-repeat="chat in chatApi.messages track by $index" ng-class="{'self': chat.self,'other': !chat.self}" id="chat_message_{{$index}}" >
+      <div class="avatar"> </div>
+      <div class="messages">
+        <b>{{chat.senderName}}</b>
+        <p>{{chat.message}}</p>
+        <time>{{convertDate(chat.time)}}</time>
+      </div>
+    </li>
+    <li id="bottom_sl"> </li>
+    <li id="bottom"> </li>
+  </ol>
+  <div layout="row" flex="5" >
+          <!-- Spacer //-->
+  </div>
+  
+  <md-input-container style="width: 100%;">
+      <input ng-model="chatApi.user.chatMessage" aria-label="Chat message" ng-keyup="chatApi.sendChat($event)" placeholder="Enter message"/>
+  </md-input-container>
+
+</section>

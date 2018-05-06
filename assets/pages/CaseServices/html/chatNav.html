@@ -1,0 +1,16 @@
+<md-sidenav class="md-sidenav-right" md-component-id="right" md-whiteframe="4">
+
+  <md-list flex>
+    <md-list-item ng-show="false" ng-click="chatApi.hideChat()">
+        Hide Chat
+        <md-divider ></md-divider>
+    </md-list-item>
+    <md-list-item ng-repeat="chat in chatApi.chats" ng-click="chatApi.openChatGroup(chat.groupName)">
+        {{chat.groupName}}
+        <md-divider ></md-divider>
+    </md-list-item>
+    <div ng-include="'/pages/CaseServices/html/messenger.html'">  </div>
+        
+  </md-list>
+
+</md-sidenav>

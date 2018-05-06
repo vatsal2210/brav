@@ -1,0 +1,142 @@
+<style>
+    .new--background,
+    .new--background md-content {
+        background: #598EBF;
+    }
+    
+    .new--md-input-container {
+        margin: 0 !important;
+    }
+    
+    .new--form-control {
+        background: #CCDCEB !important;
+        height: 40px !important;
+        border: solid 1px
+    }
+    
+    .new--submit-button {
+        color: #fff !important;
+        background: #000;
+        border-radius: 0 !important
+    }
+    
+    .new--submit-button:hover,
+    .new--submit-button:active {
+        color: #fff !important;
+        background-color: rgba(0, 0, 0) !important;
+        opacity: 0.8;
+    }
+    
+    .new--link-use {
+        background: transparent !important;
+        color: #84b0d6 !important;
+    }
+    
+    .new--link-use {
+        text-decoration: underline;
+    }
+    
+    .new--link-use:hover,
+    .new--link-use:active {
+        background: transparent !important;
+        color: #fff !important;
+        text-decoration: underline;
+    }
+</style>
+
+<div id="form1" ng-show="showForm==0" class="new--background">
+    <div class="center">
+        <h1>Sign in</h1>
+    </div>
+    <div layout="row" layout-align="center center">
+        <md-content layout-paddin flex="50">
+            <form name="projectForm" autocomplete="off" novalidate>
+
+                <md-input-container class="md-block new--md-input-container" md-no-float>
+
+                    <input placeholder="Username" class="new--form-control" required type="email" name="clientEmail" ng-model="user.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    <div ng-messages="projectForm.clientEmail.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                            Your email must be between 5 and 100 characters long and look like an e-mail address.
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block new--md-input-container" md-no-float>
+                    <input placeholder="Password" class="new--form-control" required type="password" name="clientPass" ng-model="user.pw" />
+
+                    <div ng-messages="projectForm.clientPass.$error" role="alert">
+                        <div ng-message-exp="['required']">
+                            Please enter a password.
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-button class="new--submit-button md-block" type="submit" ng-click="login(user)">Sign In</md-button>
+                <md-button class="new--link-use md-block" ng-click="forgotPass()">Forgot your password?</md-button>
+            </form>
+        </md-content>
+    </div>
+</div>
+
+<div id="form2" ng-show="showForm==1">
+
+    <h2 class="center">Enter your email</h2>
+    <h2 class="center">A verification code(OTP) will be sent on your email</h2>
+
+
+    <div layout="row" layout-align="center center">
+        <md-content layout-padding flex="50">
+            <form name="projectForm1" autocomplete="off" novalidate>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input placeholder="Email" class="new--form-control" required type="email" name="clientEmail1" ng-model="user1.email" minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    <div ng-messages="projectForm1.clientEmail1.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                            Your email must be between 5 and 100 characters long and look like an e-mail address.
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block" md-no-float>
+                    <input placeholder="New Password" class="new--form-control" required type="password" name="clientPass1" ng-model="user1.pw" />
+
+                    <div ng-messages="projectForm1.clientPass1.$error" role="alert">
+                        <div ng-message-exp="['required']">
+                            Please enter a password.
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-button class="new--submit-button" ng-click="sendOTP()">Send OTP</md-button>
+                <md-button class="new--link-use" type="submit" ng-click="goBackAt(0)">Back</md-button>
+
+            </form>
+        </md-content>
+    </div>
+</div>
+
+<div id="form3" ng-show="showForm==2">
+
+    <h1 class="center">A verification code(OTP) is sent on your email <br />Please Verify !!</h1>
+
+    <div layout="row" layout-align="center center">
+        <md-content layout-padding flex="50">
+            <form name="projectForm2" autocomplete="off" novalidate>
+
+                <md-input-container class="md-block">
+                    <label>Verification Code</label>
+                    <input required type="text" name="otp" ng-model="user1.otp" />
+
+                    <div ng-messages="projectForm2.otp.$error" role="alert">
+                        <div ng-message-exp="['required']">
+                            Please enter OTP.
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-raised md-primary" ng-click="verifyOTP()">Verify OTP</md-button>
+                <md-button class="md-primary" type="submit" ng-click="goBackAt(1)">Back</md-button>
+
+            </form>
+        </md-content>
+    </div>
+</div>

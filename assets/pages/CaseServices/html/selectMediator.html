@@ -1,0 +1,64 @@
+<div class="center" ng-init="loadMediatorsPage()">
+
+  <h1><label>Select Mediator/Brāv One</label></h1>
+
+  <md-card style="margin:0px" ng-init="getAllCases()">
+    <md-input-container style="margin:15px;">
+      <label>Search Mediators (Type anything here to search amongst the list of mediators)</label>
+      <input type="text" ng-model="filterMediator">
+    </md-input-container>
+    <md-input-container style="margin:15px;" ng-show="mediatorsArray.length==0">
+      <label>Preferred Currency of the Mediator</label>
+      <md-select ng-model="paymentCurrency">
+        <md-option ng-repeat="cr in currencies" ng-value="cr.code">
+          {{cr.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <div ng-hide="true">
+      {{(filteredMediators = (mediators | filter: filterMediator | filter:{currency : paymentCurrency}))}}
+    </div>
+  </md-card>
+
+  <md-table-container>
+    <table md-table>
+      <thead md-head md-order="_id">
+        <tr md-row>
+          <th md-column md-order-by="_id">#</th>
+          <th md-column md-numeric>Select</th>
+          <th md-column md-numeric>Name</th>
+          <th md-column md-numeric>Fees : (per Hour)</th>
+          <th md-column md-numeric>Specialities</th>
+          <th md-column md-numeric>Experience</th>
+          <th md-column md-numeric>Timezone</th>
+          <th md-column md-numeric>Description</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <!--  ng-if="mediator.currency == paymentCurrency" -->
+        <tr md-row ng-repeat="mediator in filteredMediators | limitTo: query.limit : (query.page -1) * query.limit ">
+          <td md-cell>{{ (tableDefaultOptions.query.page - 1) * tableDefaultOptions.query.limit + $index + 1 }}</td>
+          <td md-cell>
+            <md-checkbox ng-model="mediator.checked" class="md-primary" aria-label="Select Mediator {{mediator.name}}" ng-click="addOrRemoveMediator(mediator)">
+            </md-checkbox>
+          </td>
+          <td md-cell>{{mediator.name}}</td>
+          <td md-cell>{{mediator.rate}} {{mediator.currency}}/Hour</td>
+          <td md-cell>{{mediator.specialitiesString}}</td>
+          <td md-cell>{{mediator.experience}}</td>
+          <td md-cell>{{mediator.tz}}</td>
+          <td md-cell>{{mediator.description.length > 100 ? mediator.description.substring(0,100) + "..." : mediator.description}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-button class="md-primary" ng-show="mediatorsArray.length>0" ng-click="sendMediators()">Create Session with Selected Brāv ones</md-button>
+
+  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{cases.length}}"
+    md-page-select="true" md-boundary-links="true">
+  </md-table-pagination>
+
+</div>

@@ -1,0 +1,47 @@
+<div class="center">
+
+  <h1>
+    <label>All Cases</label>
+  </h1>
+
+  <md-card style="margin:0px" ng-init="getAllCases()">
+      <md-input-container style="margin:15px;">
+          <label>Filter Results</label>
+          <input type="text" ng-model="filterCase">
+      </md-input-container>
+
+      <div ng-hide="true">
+          {{(filteredCases = (cases | filter: filterCase))}}
+      </div>
+  </md-card>
+
+  <md-table-container>
+    <table md-table>
+      <thead md-head md-order="_id">
+        <tr md-row>
+          <th md-column md-order-by="_id">#</th>
+          <th md-column md-numeric>Title</th>
+          <th md-column md-numeric>Info</th>
+          <th md-column md-numeric>Actions</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row ng-repeat="case in filteredCases | limitTo: tableDefaultOptions.query.limit : (tableDefaultOptions.query.page -1) * tableDefaultOptions.query.limit">
+          <td md-cell>{{ (tableDefaultOptions.query.page  - 1) * tableDefaultOptions.query.limit + $index + 1 }}</td>
+          <td md-cell>{{case.title}}</td>
+          <td md-cell>{{case.info.length > 100 ? case.info.substring(0,100) + "..." : case.info}}</td>
+          <td md-cell>
+            <md-button class="md-raised md-warn" ng-click="modifyCase(case.title,case._id)">Edit Info</md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-table-pagination md-limit="tableDefaultOptions.query.limit" md-limit-options="tableDefaultOptions.limitOptions" md-page="tableDefaultOptions.query.page"
+    md-total="{{cases.length}}" md-page-select="true" md-boundary-links="true">
+  </md-table-pagination>
+
+  <md-button class="md-raised md-primary" ng-href="#/case/new">Add Case</md-button>
+
+</div>

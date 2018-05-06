@@ -1,0 +1,74 @@
+<div class="center" ng-init="getAllCases()">
+  <div class="center">
+    <h1>Create  Brāv Session</h1>
+  </div>
+
+  <div layout="row" layout-align="center center">
+    <md-content layout-padding flex="50">
+        <form name="createSessionForm" autocomplete="off" novalidate>
+
+          <md-input-container class="md-block" ng-if="!isMediator">
+            <label>Selected Brāv Ones</label>
+            <span ng-if="mediatorsArray.length" ng-repeat="mediator in mediatorsArray" class="ma4 md-button md-raised" ng-disabled="true">{{mediator.name}}</span>
+
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Session Title</label>
+            <input required type="text" name="title" ng-model="sessionObject.title" />
+
+            <div ng-messages="createSessionForm.title.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Please enter Session Title.
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container style="width: 100%;">
+          <label>Linked Case Title </label>
+          <md-select name="ctitle" ng-model="sessionObject.case" required>
+            <md-option ng-repeat="case in cases" ng-value="case">
+              {{case.title}}
+            </md-option>
+          </md-select>
+          <div class="errors" ng-messages="createSessionForm.ctitle.$error">
+            <div ng-message="required">Select a case from your cases.</div>
+          </div>
+        </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Description of the session</label>
+            <input required type="text" name="description" ng-model="sessionObject.description" />
+
+            <div ng-messages="createSessionForm.description.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Please enter some text here.
+              </div>
+            </div>
+          </md-input-container>
+
+            <label style="color: rgba(0,0,0,0.5);">Emails of all Other Parties Involved (press enter to add multiple)</label>
+            <md-chips class="center" ng-model="sessionObject.individualsArray" name="otherparties"
+              md-removable="removable" md-transform-chip="validateChip($chip)" md-enable-chip-edit="true"></md-chips>
+
+          <md-input-container class="md-block">
+            <label>Hours</label>
+            <input required type="number" min="2" class="center" name="hours" ng-model="sessionObject.hours" />
+
+            <div ng-messages="createSessionForm.hours.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Please enter number of hours of the Session.
+              </div>
+            </div>
+          </md-input-container>
+
+          <div class="f2">
+            <md-button class="md-primary md-disabled" ng-if="sessionObject.hours && !isMediator">{{}} {{ isMediator?'':''+(totalCost*sessionObject.hours)}}</md-button>
+          </div>
+
+          <md-button class="md-raised md-primary" type="submit" ng-click="createSession($event)">Create A Session</md-button>
+
+        </form>
+    </md-content>
+  </div>
+</div>
